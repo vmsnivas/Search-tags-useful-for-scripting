@@ -1,0 +1,9 @@
+Task:
+-----
+1.  We need to search for a word in a log and its occurances in the last minute.
+    Here we use two Date variables and search them within those two.
+    The log which i was looking at contains the following date format HH:MM:SS.
+
+    DATE1=`date +"%H:%M:%S"`
+    DATE2=`date --date='1 minutes ago' +"%H:%M:%S"`
+    sed '/$DATE1/,/$DATE2/p' <Log_File> | grep "<Key_Word>"
