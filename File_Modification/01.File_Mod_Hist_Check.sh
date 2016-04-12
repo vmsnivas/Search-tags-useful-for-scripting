@@ -15,14 +15,12 @@ fi
 for i in `echo $USERS`
  do
         HISTORY="/home/$i/.bash_history"
-#	echo $HISTORY
 	ENCDATE=`sed -ne '/'"$FILE"'/{x;p;d;}' -e x $HISTORY | grep -v ^[a-z] | tail -n1`
-	COMMAND=`sed -ne '/'"$ENCDATE"'/,+1p' $HISTORY | tail -n1`
-	MODDATE=`echo $ENCDATE | tr '#' '@'`
-	DATE=`date -d $MODDATE +'%F %T'`
-#        RESULT=`grep $FILE $HISTORY`
         if [[ ! -z $ENCDATE ]]
         then
+		COMMAND=`sed -ne '/'"$ENCDATE"'/,+1p' $HISTORY | tail -n1`
+		MODDATE=`echo $ENCDATE | tr '#' '@'`
+		DATE=`date -d $MODDATE +'%F %T'`
                 echo -e "$i\t$DATE\t$COMMAND"
         fi
  done
