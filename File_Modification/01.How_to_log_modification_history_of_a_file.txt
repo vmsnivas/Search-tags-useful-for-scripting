@@ -1,0 +1,29 @@
+# How to log the modification history of a file.
+
+In our day to day tasks we'll be working with so many files/directories.
+Depending on the permission for the files/directories we might need to 
+face some difficulties like someone might remove a file accidentally or
+due to some other cause. We may or may not have the backup plans but we
+need to be sure to know who has done that and why.
+
+For that we have a choice which is we can use the user's history to know
+that. We do know that every user's command history will be logged. That
+history will be saved in .bash_history file. Which can also be viewed by
+using the history command by that specific user.
+
+If the admin need to do audit to check the file modification history then
+the .bash_history file can be used.
+
+But one primary thing is, only the command history will be logged and we
+will not get the time of command execution by default. For that we need to 
+modify the user's environment to log the date and time of execution along
+with the command.
+
+Step 1 :
+	Append the folloowing line to .bashrc file in the user's Homedir
+	echo "export HISTTIMEFORMAT='%F %T '" >> ~/.bashrc
+	NOTE : Also add this to /etc/bashrc or /etc/skel/.bashrc to get 
+	effected to the new users too.
+
+Step 2 :
+	
