@@ -20,10 +20,16 @@ modify the user's environment to log the date and time of execution along
 with the command.
 
 Step 1 :
-	Append the folloowing line to .bashrc file in the user's Homedir
+	Append the following line to .bashrc file in the user's Homedir
 	echo "export HISTTIMEFORMAT='%F %T '" >> ~/.bashrc
 	NOTE : Also add this to /etc/bashrc or /etc/skel/.bashrc to get 
 	effected to the new users too.
 
 Step 2 :
-	
+	Append the following line to .profile or .bash_profile in the 
+	user's homedir.
+	echo "source ~/.bashrc" >> ~/.profile (or)
+	echo "source ~/.bashrc" >> ~/.bash_profile
+
+Now use the below script to audit the command history of the users.
+Usage : sh 01.File_Mod_Hist_Check.sh < command or file_name to be verified>
